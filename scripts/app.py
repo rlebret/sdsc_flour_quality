@@ -27,9 +27,9 @@ def app(config_file):
 
     # Instantiate the model
     model_name = config["model_name"]
+    model_params = config["hyperparameters"]  # noqa
     config["hyperparameters"]
     model = eval(f"{model_name}(**model_params)")
-    print(model.hyperparameters())
     # load model
     model.load(os.path.join(config["output_path"], "model.pkl"))
     print("Model loaded")
