@@ -104,7 +104,7 @@ hatch run evaluate data/test.csv "configs/${model_name}_${filename}_${scaling}.y
 
 ## Run demo
 
-Run the demo with a choosen model:
+Run the demo with a chosen model:
 
 ```console
 scaling="standard"
