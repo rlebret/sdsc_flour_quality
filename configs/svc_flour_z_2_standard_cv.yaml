@@ -1,0 +1,10 @@
+data_path: data/preprocessed/flour_z_2.csv
+regression: false
+oversample: false
+model_name: SVCFlour
+scaling_method: standard
+hyperparameters: { 'kernel': 'rbf', 'C': 1 }
+test_size: 0.2
+random_state: 42
+cross_validation: true
+output_path: checkpoints/flour_z_2_svc_standard_cv

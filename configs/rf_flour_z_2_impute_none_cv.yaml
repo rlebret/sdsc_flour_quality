@@ -1,0 +1,17 @@
+data_path: data/preprocessed/flour_z_2_impute.csv
+oversample: false
+model_name: RandomForestFlour
+scaling_method: none
+hyperparameters:
+  {
+    'n_estimators': 400,
+    'min_samples_split': 10,
+    'min_samples_leaf': 1,
+    'max_features': 'sqrt',
+    'max_depth': 60,
+    'bootstrap': false,
+  }
+test_size: 0.2
+random_state: 42
+cross_validation: true
+output_path: checkpoints/flour_z_2_impute_rf_none_cv

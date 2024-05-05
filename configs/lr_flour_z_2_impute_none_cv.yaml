@@ -1,0 +1,9 @@
+data_path: data/preprocessed/flour_z_2_impute.csv
+oversample: false
+model_name: LinearRegressionFlour
+scaling_method: none
+hyperparameters: {}
+test_size: 0.2
+random_state: 42
+output_path: checkpoints/flour_z_2_impute_lr_none_cv
+cross_validation: true

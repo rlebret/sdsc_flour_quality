@@ -1,0 +1,9 @@
+data_path: data/preprocessed/flour_z_3_impute.csv
+oversample: false
+regression: true
+model_name: LinearRegressionFlour
+scaling_method: standard
+hyperparameters: {}
+test_size: 0.2
+random_state: 42
+output_path: checkpoints/flour_z_3_impute_lr_standard

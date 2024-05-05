@@ -1,0 +1,9 @@
+data_path: data/preprocessed/flour_z_3_impute.csv
+oversample: true
+regression: true
+model_name: SVRFlour
+scaling_method: standard
+hyperparameters: { 'kernel': 'rbf', 'C': 1000 }
+test_size: 0.2
+random_state: 42
+output_path: checkpoints/flour_z_3_impute_svr_standard_oversample

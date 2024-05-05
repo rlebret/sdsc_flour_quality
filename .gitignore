@@ -1,0 +1,4 @@
+checkpoints
+# ignore cache files from python
+__pycache__
+*.pyc

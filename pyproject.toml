@@ -1,0 +1,106 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "flour"
+dynamic = ["version"]
+description = 'A Machine Learning project to predict the quality of flour.'
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = ["Machine Learning", "Flour Quality", "Data Science"]
+authors = [
+  { name = "rlebret", email = "remi@lebret.ch" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "pyyaml",
+  "pandas",
+  "scikit-learn",
+  "numpy",
+  "scipy",
+  "matplotlib",
+  "seaborn",
+  "imblearn"
+]
+
+[project.optional-dependencies]
+notebook = [
+    "jupyter",
+    "ipython",
+]
+lint = ["pre-commit"]
+
+[project.urls]
+Documentation = "https://github.com/rlebret/sdsc_flour_quality#readme"
+Issues = "https://github.com/rlebret/sdsc_flour_quality/issues"
+Source = "https://github.com/rlebret/sdsc_flour_quality"
+
+[tool.hatch.version]
+path = "src/flour/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/flour tests}"
+
+[tool.hatch.envs.default]
+path = ".venv"
+features = ["notebook", "lint"]
+post-install-commands = [
+    "pre-commit install",
+]
+
+[tool.hatch.envs.default.scripts]
+preprocess  = "python scripts/preprocess.py {args:--help}"
+train = "python scripts/train.py {args:--help}"
+hyperparameters = "python scripts/hyperparameters_search.py {args:--help}"
+evaluate = "python scripts/evaluate.py {args:--help}"
+
+[tool.hatch.envs.demo]
+extra-dependencies = [
+  "streamlit",
+  "click"
+]
+
+[tool.hatch.envs.demo.scripts]
+run = "streamlit run scripts/app.py -- {args}"
+
+[tool.coverage.run]
+source_pkgs = ["flour", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/flour/__about__.py",
+]
+
+[tool.coverage.paths]
+flour = ["src/flour", "*/flour/src/flour"]
+tests = ["tests", "*/flour/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[tool.hatch.envs.lint]
+detached = true
+features = ["lint"]
+
+[tool.hatch.envs.lint.scripts]
+run = "pre-commit run --all-files --show-diff-on-failure"
