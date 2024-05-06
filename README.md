@@ -1,4 +1,4 @@
-# flour
+# Flour Quality Classification
 
 ## Table of Contents
 
