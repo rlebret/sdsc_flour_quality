@@ -1,19 +1,28 @@
 # flour
 
-[![PyPI - Version](https://img.shields.io/pypi/v/flour.svg)](https://pypi.org/project/flour)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/flour.svg)](https://pypi.org/project/flour)
-
----
-
 ## Table of Contents
 
 - [Installation](#installation)
+- [Data Preprocessing](#data-preprocessing)
+- [Hyper-parameters search](#hyper-parameters-search)
+- [Training](#training)
+- [Evaluation](#evaluation)
+- [Demo](#demo)
 - [License](#license)
 
 ## Installation
 
+1. Install [Hatch](https://hatch.pypa.io/latest/install/) if not installed on your system:
+
 ```console
-pip install flour
+pip install hatch
+```
+
+2. Clone the repo:
+
+```
+git clone git@github.com:rlebret/sdsc_flour_quality.git
+cd sdsc_flour_quality
 ```
 
 ## Data Preprocessing
@@ -78,7 +87,7 @@ hatch run hyperparameters \
     --regression
 ```
 
-## Training model
+## Training
 
 ```console
 mkdir checkpoints
@@ -93,7 +102,7 @@ model_name="rf"
 hatch run train "configs/${model_name}_${filename}_${scaling}.yaml"
 ```
 
-## Evaluate the model
+## Evaluation
 
 ```console
 scaling="none"
@@ -102,7 +111,7 @@ model_name="rf"
 hatch run evaluate data/test.csv "configs/${model_name}_${filename}_${scaling}.yaml"
 ```
 
-## Run demo
+## Demo
 
 Run the demo with a chosen model:
 
